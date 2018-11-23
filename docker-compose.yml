@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  gitbucket:
+    build:
+      context: $HOME/projects/gitbucket_compose
+      dockerfile: Dockerfile
+    privileged: true
+    volumes:
+      - /Users/togalid/projects/gitbucket_compose/src/plugins:/gitbucket/plugins
+      - /Users/togalid/projects/gitbucket_compose/src/gitbucket:/gitbucket
+    ports:
+      - "8080:8080"
+    mem_limit: 2g
+
+  pytest:
+    build:
+      context: $HOME/projects/gitbucket_compose/pytest
+      dockerfile: Dockerfile
+    privileged: true
